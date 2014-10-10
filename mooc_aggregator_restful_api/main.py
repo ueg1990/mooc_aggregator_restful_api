@@ -1,5 +1,5 @@
 '''
-Hello World example in flask
+This module will contain all the routes for the restful API
 '''
 
 from flask import Flask
