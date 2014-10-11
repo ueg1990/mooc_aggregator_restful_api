@@ -1,5 +1,6 @@
 import unittest
 
+
 class InitializationTests(unittest.TestCase):
 
     def test_initialization(self):

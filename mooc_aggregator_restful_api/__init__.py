@@ -1,5 +1,5 @@
 '''
-MOOC Aggregator Restful API 
+MOOC Aggregator Restful API
 
 @author Usman Ehtesham Gul
 @email uehtesham90@gmail.com
