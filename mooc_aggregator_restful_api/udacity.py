@@ -18,8 +18,8 @@ class UdacityAPI(object):
     '''
 
     def __init__(self):
-        udacity_api_endpoint = 'https://udacity.com/public-api/v0/courses'
-        self.response = requests.get(udacity_api)
+        UDACITY_API_ENDPOINT = 'https://udacity.com/public-api/v0/courses'
+        self.response = requests.get(UDACITY_API_ENDPOINT)
 
     def status_code(self):
         return self.response.status_code
