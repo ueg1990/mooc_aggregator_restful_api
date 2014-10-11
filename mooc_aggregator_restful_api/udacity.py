@@ -10,7 +10,25 @@ https://s3.amazonaws.com/content.udacity-data.com/techdocs/UdacityCourseCatalogA
 import json
 import requests
 
-response = requests.get('https://udacity.com/public-api/v0/courses')
-for course in response.json()['courses']:
-    print course['title']
-    print course['homepage']
+
+class UdacityAPI(object):
+    '''
+    This class defines attributes and methods for Udaciy API
+
+    '''
+
+    def __init__(self):
+        udacity_api_endpoint = 'https://udacity.com/public-api/v0/courses'
+        self.response = requests.get(udacity_api)
+
+    def status_code(self):
+        return self.response.status_code
+
+    def courses(self):
+        return self.response.json()['courses']
+
+    def tracks(self):
+        return self.response.json()['tracks']
+
+if __name__ == '__main__':
+    pass
