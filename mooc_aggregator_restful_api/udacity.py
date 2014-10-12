@@ -24,12 +24,27 @@ class UdacityAPI(object):
         self.tracks = self.response.json()['tracks']
 
     def status_code(self):
+        '''
+        Return status code of response object
+
+        '''
+
         return self.response.status_code
 
     def get_courses(self):
+        '''
+        Return list of course objects for all courses offered by Udacity
+
+        '''
+
         return self.courses
 
     def get_tracks(self):
+        '''
+        Return list of tracks offered by Udacity
+
+        '''
+
         return self.tracks
 
 if __name__ == '__main__':
