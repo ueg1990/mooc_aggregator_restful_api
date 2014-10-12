@@ -19,7 +19,7 @@ class UdacityAPI(object):
     UDACITY_API_ENDPOINT = 'https://udacity.com/public-api/v0/courses'
 
     def __init__(self):
-        self.response = requests.get(UDACITY_API_ENDPOINT)
+        self.response = requests.get(UdacityAPI.UDACITY_API_ENDPOINT)
         self.courses = self.response.json()['courses']
         self.tracks = self.response.json()['tracks']
 
