@@ -20,15 +20,18 @@ class UdacityAPI(object):
     def __init__(self):
         UDACITY_API_ENDPOINT = 'https://udacity.com/public-api/v0/courses'
         self.response = requests.get(UDACITY_API_ENDPOINT)
+        self.courses = self.response.json()['courses']
+        self.tracks = self.response.json()['tracks']
 
     def status_code(self):
         return self.response.status_code
 
-    def courses(self):
-        return self.response.json()['courses']
+    def get_courses(self):
+        return self.courses
 
-    def tracks(self):
-        return self.response.json()['tracks']
+    def get_tracks(self):
+        return self.tracks
 
 if __name__ == '__main__':
-    pass
+    udacity_object = UdacityAPI()
+    print len(udacity_object.get_tracks())
