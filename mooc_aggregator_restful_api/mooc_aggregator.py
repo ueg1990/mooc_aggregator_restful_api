@@ -3,6 +3,7 @@ This module aggregates all the course information from different MOOC platforms
 and stores them in the database (MongoDB)
 '''
 
+from udacity import UdacityAPI
 
 class MOOCAggregator(object):
     '''
@@ -12,7 +13,8 @@ class MOOCAggregator(object):
     MOOC_PLATFORMS = {'udacity'}
 
     def __init__(self):
-        pass
+        self.udacity = UdacityAPI()
+
 
 
 if __name__ == '__main__':
