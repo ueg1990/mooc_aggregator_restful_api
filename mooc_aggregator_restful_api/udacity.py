@@ -16,9 +16,9 @@ class UdacityAPI(object):
     This class defines attributes and methods for Udaciy API
 
     '''
+    UDACITY_API_ENDPOINT = 'https://udacity.com/public-api/v0/courses'
 
     def __init__(self):
-        UDACITY_API_ENDPOINT = 'https://udacity.com/public-api/v0/courses'
         self.response = requests.get(UDACITY_API_ENDPOINT)
         self.courses = self.response.json()['courses']
         self.tracks = self.response.json()['tracks']
@@ -34,4 +34,5 @@ class UdacityAPI(object):
 
 if __name__ == '__main__':
     udacity_object = UdacityAPI()
-    print len(udacity_object.get_tracks())
+    print len(udacity_object.get_courses())
+    print udacity_object.get_courses()[0].keys()
