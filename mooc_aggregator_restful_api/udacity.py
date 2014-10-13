@@ -6,8 +6,6 @@ https://s3.amazonaws.com/content.udacity-data.com/techdocs/UdacityCourseCatalogA
 
 '''
 
-
-import json
 import requests
 
 
