@@ -10,10 +10,11 @@ class MOOCAggregator(object):
     This class defines the attributes and methods for the MOOC aggregator
 
     '''
-    MOOC_PLATFORMS = {'udacity'}
+    MOOC_PLATFORMS = {'udacity', 'coursera'}
 
     def __init__(self):
         self.udacity = UdacityAPI()
+        self.coursera = CourseraAPI()
 
 
 
