@@ -7,7 +7,7 @@ class InitializationTests(unittest.TestCase):
         """
         Check the test suite runs by affirming 2+2=4
         """
-        self.assertEqual(2+2, 4)
+        self.assertEqual(2 + 2, 4)
 
     def test_import(self):
         """

@@ -1,5 +1,5 @@
 '''
-This module retrieves information of all the courses offered by Coursera 
+This module retrieves information of all the courses offered by Coursera
 through their Catalog APIs
 
 Link to documentation:
@@ -8,6 +8,7 @@ https://tech.coursera.org/app-platform/catalog/
 '''
 
 import requests
+
 
 class CourseraAPI(object):
     '''
@@ -28,7 +29,6 @@ class CourseraAPI(object):
         self.response_instructors = requests.get(CourseraAPI.COURSERA_CATALOG_API_ENDPOINT_INSTRUCTORS)
         self.response_sessions = requests.get(CourseraAPI.COURSERA_CATALOG_API_ENDPOINT_SESSIONS)
 
-    
-
 if __name__ == '__main__':
-    pass
+    coursera_object = CourseraAPI()
+    print coursera_object.response_courses.text
