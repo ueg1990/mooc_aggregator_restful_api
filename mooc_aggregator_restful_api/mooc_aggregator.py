@@ -4,6 +4,7 @@ and stores them in the database (MongoDB)
 '''
 
 from udacity import UdacityAPI
+from coursera import CourseraAPI
 
 
 class MOOCAggregator(object):
