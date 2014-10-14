@@ -29,11 +29,11 @@ To run all tests using nose and coverage,
 
 Whole project:
 
-    $ pep8 --exclude=LICENSE*,*.txt,*.md,*.pyc,.svn,CVS,.bzr,.hg,.git,__pycache__ * 
+    $ pep8 --exclude=LICENSE*,*.txt,*.md,*.pyc,.svn,CVS,.bzr,.hg,.git,__pycache__ --ignore=E501 * 
 
 A specific file:
 
-    $ pep8 --exclude=LICENSE*,*.txt,*.md,*.pyc,.svn,CVS,.bzr,.hg,.git,__pycache__ <path_to_file> 
+    $ pep8 --exclude=LICENSE*,*.txt,*.md,*.pyc,.svn,CVS,.bzr,.hg,.git,__pycache__ --ignore=E501 <path_to_file> 
 
 # Author
 
