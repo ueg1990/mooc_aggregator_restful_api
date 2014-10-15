@@ -12,4 +12,5 @@ __copyright__ = 'Copyright 2014 Usman Ehtesham Gul'
 
 import main
 import udacity
+import coursera
 import mooc_aggregator

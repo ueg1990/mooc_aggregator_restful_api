@@ -2,6 +2,8 @@
 This module aggregates all the course information from different MOOC platforms
 and stores them in the database (MongoDB)
 '''
+from mongoengine import connect
+from flask.ext.mongoengine import MongoEngine
 
 from udacity import UdacityAPI
 from coursera import CourseraAPI

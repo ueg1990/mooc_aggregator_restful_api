@@ -7,6 +7,11 @@ used to create one's own online course aggregator app
 | ------------ |
 | [![Build Status](https://travis-ci.org/ueg1990/mooc_aggregator_restful_api.svg?branch=master)](https://travis-ci.org/ueg1990/mooc_aggregator_restful_api)|
 
+# Dependencies
+To install, run:
+   
+     $ pip install -r requirements.txt
+
 # Tests
 
 To run individual tests, under the pypoker parent folder,
