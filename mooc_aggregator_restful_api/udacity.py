@@ -45,7 +45,37 @@ class UdacityAPI(object):
 
         return self.tracks
 
+    def mongofy_courses(self):
+        '''
+        Convert list of courses to a format that follows the database schema
+        which will be inserted into the MongoDB database
+
+        '''
+
+        return [{'mooc': 'udacity', 'title': item['title'], 'subtitle': item['subtitle'],
+                 'photo': item['image'], 'trailer': item['teaser_video']['youtube_url'],
+                 'short_summary': item['short_summary'], 'summary': item['summary'],
+                 'recommended_background': item['required_knowledge'], 'syllabus': item['syllabus'],
+                 'instructors': item['instructors'], 'faq': item['faq'], 'categories': item['tracks']}
+                for item in self.get_courses()]
+        # result = []
+        # for item in self.get_courses():
+        #     course = {}
+        #     course['mooc'] = 'udacity'
+        #     course['title'] = item['title']
+        #     course['subtitle'] = item['subtitle']
+        #     course['photo'] = item['image']
+        #     course['trailer'] = item['teaser_video']['youtube_url']
+        #     course['short_summary'] = item['short_summary']
+        #     course['summary'] = item['summary']
+        #     course['recommended_background'] = item['required_knowledge']
+        #     course['syllabus'] = item['syllabus']
+        #     course['instructors'] = item['instructors']
+        #     course['faq'] = item['faq']
+        #     course['categories'] = item['tracks']
+
+
 if __name__ == '__main__':
     udacity_object = UdacityAPI()
-    print len(udacity_object.get_courses())
-    print udacity_object.get_courses()[0].keys()
+    courses = udacity_object.get_courses()[0]
+    print udacity_object.mongofy_courses()[0]
