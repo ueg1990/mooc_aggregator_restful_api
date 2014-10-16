@@ -19,6 +19,7 @@ class MOOCAggregator(object):
     def __init__(self):
         self.udacity = UdacityAPI()
         self.coursera = CourseraAPI()
+        connect('moocs')
 
 if __name__ == '__main__':
     pass
