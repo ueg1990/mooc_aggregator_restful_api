@@ -37,7 +37,7 @@ class MOOCAggregator(object):
         '''
 
         for course in courses:
-            instructors = [Instructor(item['name'], item['bio'], item['image'])
+	    instructors = [Instructor(name=item['name'], bio=item['bio'], image=item['image'])
                            for item in course['instructors']]
             mooc = Mooc(course['mooc'], course['title'], course['subtitle'],
                         course['photo'], course['trailer'], course['short_summary'],
