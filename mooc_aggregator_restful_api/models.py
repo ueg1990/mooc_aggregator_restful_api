@@ -9,12 +9,22 @@ from mongoengine import *
 
 
 class Instructor(EmbeddedDocument):
+    '''
+    Define Embedded Document for Instructor object
+
+    '''
+
     name = StringField()
     bio = StringField()
     image = StringField()
 
 
 class Mooc(Document):
+    '''
+    Define schema for Mooc object
+
+    '''
+
     mooc = StringField()
     title = StringField()
     subtitle = StringField()
@@ -27,5 +37,3 @@ class Mooc(Document):
     instructors = ListField(EmbeddedDocumentField(Instructor))
     faq = StringField()
     categories = ListField(StringField())
-
-

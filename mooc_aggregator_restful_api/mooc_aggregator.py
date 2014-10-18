@@ -7,7 +7,7 @@ from flask.ext.mongoengine import MongoEngine
 
 from udacity import UdacityAPI
 from coursera import CourseraAPI
-from models import Mooc
+from models import Mooc, Instructor
 
 
 class MOOCAggregator(object):
@@ -23,12 +23,35 @@ class MOOCAggregator(object):
         connect('moocs')
 
     def update_database(self):
-    	udacity_courses = self.udacity.mongofy_courses()
-    	course = udacity_courses[0]
-    	mooc = Mooc(course['mooc'], course['title'])
-	mooc.save()
-    	return len(udacity_courses)
+        '''
+        Add MOOCs to the MongoDB database
+
+        '''
+        udacity_courses = self.udacity.mongofy_courses()
+        self._update_udacity_courses(udacity_courses)
+
+    def _update_udacity_courses(self, courses):
+    	'''
+        Add Udactiy courses to the MongoDB database
+
+        '''
+
+        for course in courses:
+            instructors = [Instructor(item['name'], item['bio'], item['image'])
+                           for item in course['instructors']]
+            mooc = Mooc(course['mooc'], course['title'], course['subtitle'],
+                        course['photo'], course['trailer'], course['short_summary'],
+                        course['summary'], course['recommended_background'],
+                        course['syllabus'], instructors, course['faq'], course['categories'])
+            mooc.save()
+
+    def _update_coursera_courses(self, courses):
+    	'''
+        Add Coursera courses to the MongoDB database
+
+        '''
+        pass
 
 if __name__ == '__main__':
     mooc = MOOCAggregator()
-    print mooc.update_database()
+    mooc.update_database()
