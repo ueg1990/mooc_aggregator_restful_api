@@ -20,12 +20,13 @@ class MOOCAggregator(object):
     def __init__(self):
         self.udacity = UdacityAPI()
         self.coursera = CourseraAPI()
-        #connect('moocs')
+        connect('moocs')
 
     def update_database(self):
     	udacity_courses = self.udacity.mongofy_courses()
     	course = udacity_courses[0]
     	mooc = Mooc(course['mooc'], course['title'])
+	mooc.save()
     	return len(udacity_courses)
 
 if __name__ == '__main__':
