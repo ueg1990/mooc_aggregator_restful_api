@@ -7,6 +7,7 @@ from flask.ext.mongoengine import MongoEngine
 
 from udacity import UdacityAPI
 from coursera import CourseraAPI
+from models import Mooc
 
 
 class MOOCAggregator(object):
@@ -19,7 +20,14 @@ class MOOCAggregator(object):
     def __init__(self):
         self.udacity = UdacityAPI()
         self.coursera = CourseraAPI()
-        connect('moocs')
+        #connect('moocs')
+
+    def update_database(self):
+    	udacity_courses = self.udacity.mongofy_courses()
+    	course = udacity_courses[0]
+    	mooc = Mooc(course['mooc'], course['title'])
+    	return len(udacity_courses)
 
 if __name__ == '__main__':
-    pass
+    mooc = MOOCAggregator()
+    print mooc.update_database()
