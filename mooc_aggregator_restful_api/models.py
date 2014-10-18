@@ -8,6 +8,12 @@ in the MongoDB database
 from mongoengine import *
 
 
+class Instructor(EmbeddedDocument):
+    name = StringField()
+    bio = StringField()
+    image = StringField()
+
+
 class Mooc(Document):
     mooc = StringField()
     title = StringField()
@@ -23,7 +29,3 @@ class Mooc(Document):
     categories = ListField(StringField())
 
 
-class Instructor(EmbeddedDocument):
-    name = StringField()
-    bio = StringField()
-    image = StringField()
