@@ -2,7 +2,7 @@
 This module will contain all the routes for the restful API
 '''
 
-from flask import Flask, import make_response, jsonify
+from flask import Flask, make_response, jsonify
 
 app = Flask(__name__)
 
