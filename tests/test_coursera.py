@@ -29,7 +29,7 @@ class CourseraTestCase(unittest.TestCase):
 
     def test_coursera_api_mongofy_courses(self):
         pass
-    
+
     def tearDown(self):
         pass
 
