@@ -34,7 +34,6 @@ class UdacityAPI(object):
         Return list of course objects for all courses offered by Udacity
 
         '''
-
         return self.courses
 
     def get_tracks(self):
@@ -42,7 +41,6 @@ class UdacityAPI(object):
         Return list of tracks offered by Udacity
 
         '''
-
         return self.tracks
 
     def mongofy_courses(self):
@@ -51,7 +49,6 @@ class UdacityAPI(object):
         which will be inserted into the MongoDB database
 
         '''
-
         return [{'mooc': 'udacity', 'title': item['title'], 'subtitle': item['subtitle'],
                  'photo': item['image'], 'trailer': item['teaser_video']['youtube_url'],
                  'short_summary': item['short_summary'], 'summary': item['summary'],
@@ -73,7 +70,6 @@ class UdacityAPI(object):
         #     course['instructors'] = item['instructors']
         #     course['faq'] = item['faq']
         #     course['categories'] = item['tracks']
-
 
 if __name__ == '__main__':
     udacity_object = UdacityAPI()

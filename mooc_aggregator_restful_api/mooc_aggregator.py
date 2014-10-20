@@ -35,15 +35,15 @@ class MOOCAggregator(object):
         Add Udactiy courses to the MongoDB database
 
         '''
-
         for course in courses:
-            if not Mooc.objects(mooc=course['mooc'],title=course['title']):
-	        instructors = [Instructor(name=item['name'], bio=item['bio'], image=item['image'])
+            if not Mooc.objects(mooc=course['mooc'], title=course['title']):
+                instructors = [Instructor(name=item['name'], bio=item['bio'], image=item['image'])
                                for item in course['instructors']]
                 mooc = Mooc(course['mooc'], course['title'], course['subtitle'],
                             course['photo'], course['trailer'], course['short_summary'],
                             course['summary'], course['recommended_background'],
-                            course['syllabus'], instructors, course['faq'], course['categories'])
+                            course['syllabus'], instructors, course['faq'],
+                            course['categories'])
                 mooc.save()
 
     def _update_coursera_courses(self, courses):
