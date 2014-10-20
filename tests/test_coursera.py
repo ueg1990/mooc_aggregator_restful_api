@@ -27,6 +27,9 @@ class CourseraTestCase(unittest.TestCase):
     def test_coursera_api_sessions_response(self):
         self.assertEqual(self.coursera_test_object.response_sessions.status_code, 200)
 
+    def test_coursera_api_mongofy_courses(self):
+        pass
+    
     def tearDown(self):
         pass
 

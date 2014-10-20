@@ -29,6 +29,14 @@ class CourseraAPI(object):
         self.response_instructors = requests.get(CourseraAPI.COURSERA_CATALOG_API_ENDPOINT_INSTRUCTORS)
         self.response_sessions = requests.get(CourseraAPI.COURSERA_CATALOG_API_ENDPOINT_SESSIONS)
 
+    def mongofy_courses(self):
+        '''
+        Convert list of courses to a format that follows the database schema
+        which will be inserted into the MongoDB database
+
+        '''
+        pass
+
 if __name__ == '__main__':
     coursera_object = CourseraAPI()
     print coursera_object.response_courses.text
