@@ -20,7 +20,7 @@ def hello_world():
     '''
     Hello world function
     '''
-    return 'Hello World!!!'
+    return 'Hello World!!!\n'
 
 
 @app.errorhandler(404)
@@ -47,7 +47,7 @@ def get_courses():
     Get all MOOCs from the server
 
     '''
-    return jsonify({'moocs': Mooc.objects})
+    return jsonify({'moocs': Mooc.objects.to_json()})
 
 
 @app.route('/moocs/api/v1/courses/<mooc>', methods=['GET'])
@@ -57,7 +57,7 @@ def get_courses_by_mooc(mooc):
 
     '''
     if mooc in MOOC_PLATFORMS:
-        return jsonify({'moocs': Mooc.objects(mooc=mooc)})
+        return jsonify({'moocs': Mooc.objects(mooc=mooc).to_json()})
     else:
         return not_found()
 
