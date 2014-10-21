@@ -60,6 +60,16 @@ def get_courses_by_mooc(mooc):
     else:
         return not_found()
 
+
+@app.route('/moocs/api/v1/coursenames', methods=['GET'])
+def get_courses():
+    '''
+    Get all names of the MOOCs from the server
+
+    '''
+    result = [course['title'] for course in Mooc.objects]
+    return jsonify({'coursenames': result})
+
 if __name__ == '__main__':
     # Enable debug mode so that server restarts everytime there is a change to
     # a file. Remove in production
