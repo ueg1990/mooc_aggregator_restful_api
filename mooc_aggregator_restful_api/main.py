@@ -9,7 +9,6 @@ from flask.ext.mongoengine import MongoEngine
 from models import Mooc
 
 app = Flask(__name__)
-connect('moocs')
 
 # Update this variable everytime a new MOOC platform is added to the Restful API
 MOOC_PLATFORMS = {'udacity', 'coursera'}
@@ -64,5 +63,6 @@ def get_courses_by_mooc(mooc):
 if __name__ == '__main__':
     # Enable debug mode so that server restarts everytime there is a change to
     # a file. Remove in production
+    connect('moocs')
     app.run(debug=True)
     # app.run()
