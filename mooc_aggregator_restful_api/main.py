@@ -62,13 +62,28 @@ def get_courses_by_mooc(mooc):
 
 
 @app.route('/moocs/api/v1/coursenames', methods=['GET'])
-def get_courses():
+def get_coursenames():
     '''
     Get all names of the MOOCs from the server
 
     '''
     result = [course['title'] for course in Mooc.objects]
-    return jsonify({'coursenames': result})
+    return jsonify({'coursenames' : result})
+
+
+
+@app.route('/moocs/api/v1/coursenames/<mooc>', methods=['GET'])
+def get_coursenames_by_mooc(mooc):
+    '''
+    Get all coursenames that belong to a given MOOC platform e.g. Udacity or Coursera
+
+    '''
+    if mooc in MOOC_PLATFORMS:
+        result = [course['title'] for course in Mooc.objects(mooc=mooc)]
+        return jsonify({'coursenames' : result})
+    else:
+        return not_found()
+
 
 if __name__ == '__main__':
     # Enable debug mode so that server restarts everytime there is a change to
