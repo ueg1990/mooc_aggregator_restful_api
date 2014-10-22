@@ -2,7 +2,7 @@
 This module will contain all the routes for the restful API
 '''
 
-from flask import Flask, make_response, jsonify
+from flask import Flask, make_response, jsonify, request
 from mongoengine import connect
 from flask.ext.mongoengine import MongoEngine
 
@@ -46,6 +46,13 @@ def get_courses():
     Get all MOOCs from the server
 
     '''
+    fields = request.args.get('fields')
+    if fields:
+        try:
+            parameters = fields.split(',')
+            return jsonify({'moocs': Mooc.objects.only(*parameters).to_json()})
+        except:
+            return jsonify({'moocs': Mooc.objects.to_json()})
     return jsonify({'moocs': Mooc.objects.to_json()})
 
 
@@ -56,6 +63,13 @@ def get_courses_by_mooc(mooc):
 
     '''
     if mooc in MOOC_PLATFORMS:
+        fields = request.args.get('fields')
+        if fields:
+            try:
+                parameters = fields.split(',')
+                return jsonify({'moocs': Mooc.objects(mooc=mooc).only(*parameters).to_json()})
+            except:
+                return jsonify({'moocs': Mooc.objects(mooc=mooc).to_json()})
         return jsonify({'moocs': Mooc.objects(mooc=mooc).to_json()})
     else:
         return not_found()
