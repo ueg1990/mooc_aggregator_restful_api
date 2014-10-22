@@ -86,8 +86,12 @@ def get_coursenames_by_mooc(mooc):
 
 
 if __name__ == '__main__':
+
+    connect('moocs')
     # Enable debug mode so that server restarts everytime there is a change to
     # a file. Remove in production
-    connect('moocs')
-    app.run(debug=True)
+    #app.run(debug=True)
+    
+    # To make app externally available
+    app.run(host='0.0.0.0')
     # app.run()
