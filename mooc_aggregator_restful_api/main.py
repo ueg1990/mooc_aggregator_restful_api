@@ -17,9 +17,9 @@ MOOC_PLATFORMS = {'udacity', 'coursera'}
 @app.route('/')
 def hello_world():
     '''
-    Hello world function
+    Welcome Page
     '''
-    return 'Hello World!!!\n'
+    return 'Welcome to the MOOC Aggregator Restful API!!!\n'
 
 
 @app.errorhandler(404)
@@ -43,7 +43,16 @@ def internal_server_error(error):
 @app.route('/moocs/api/v1/courses', methods=['GET'])
 def get_courses():
     '''
-    Get all MOOCs from the server
+    Get all MOOCs from the server. Allow retrieving only subset of fields by
+    passing subset of fields as GET parameter with key 'fields', for example,
+
+    curl http://127.0.0.1:5000/moocs/api/v1/courses?fields=title,subtitle
+
+    If provided key is other than 'fields' or any value of subset of fields
+    does not match that in database, return result of default API call:
+
+    curl http://127.0.0.1:5000/moocs/api/v1/courses
+
 
     '''
     fields = request.args.get('fields')
@@ -60,6 +69,15 @@ def get_courses():
 def get_courses_by_mooc(mooc):
     '''
     Get all courses that belong to a given MOOC platform e.g. Udacity or Coursera
+    Allow retrieving only subset of fields by passing subset of fields as GET
+    parameter with key 'fields', for example,
+
+    curl http://127.0.0.1:5000/moocs/api/v1/courses/udacity?fields=title,subtitle
+
+    If provided key is other than 'fields' or any value of subset of fields
+    does not match that in database, return result of default API call:
+
+    curl http://127.0.0.1:5000/moocs/api/v1/courses/udacity
 
     '''
     if mooc in MOOC_PLATFORMS:
