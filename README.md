@@ -13,6 +13,8 @@ To install, run:
      $ pip install -r requirements.txt
 
 # Usage
+## Server Setup
+
 To run app locally in debug mode,
 
     $ python main.py
@@ -29,7 +31,7 @@ This tells your operating system to listen on all public IPs. Doing this is usef
 
 Once server is running, you can open a new console window/tab and use curl to make API requests:
 
-    curl -i http://127.0.0.1:5000/  
+    $ curl -i http://127.0.0.1:5000/  
     
 You should see the following output:
 
@@ -40,6 +42,45 @@ You should see the following output:
 	Date: Thu, 23 Oct 2014 21:06:38 GMT
 
 	Hello World!!!
+	
+## HTTP Status Code Summary
+
+    200 OK - Everything worked as expected.
+    404 Not Found - The requested item doesn't exist.
+    500 Internal Server Error - Something went wrong on the server.
+
+## API 
+
+**Note**: All HTTP requests methods are GET requets
+
+**Base URL**: http://127.0.0.1:5000/ (localhost)
+
+**Output**: JSON
+
+#### Get all courses and their information
+    
+GET /moocs/api/v1/courses (without parameters)
+
+GET /moocs/api/v1/courses?fieds=mooc,title,subtitle (with parameters)
+      
+**Parameters:**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| fields | String | Return only specified fields; if not provided, then return all fields |
+
+#### Get all courses and their information for a given MOOC platfrom (e.g. Udacity or Coursera)
+    
+GET /moocs/api/v1/courses/<mooc> (without parameters)
+
+GET /moocs/api/v1/courses/<mooc>?fieds=mooc,title,subtitle (with parameters)
+      
+**Parameters:**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| fields | String | Return only specified fields; if not provided, then return all fields |    
+
 
 # Tests
 
