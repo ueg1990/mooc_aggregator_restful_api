@@ -12,6 +12,35 @@ To install, run:
    
      $ pip install -r requirements.txt
 
+# Usage
+To run app locally in debug mode,
+
+    $ python main.py
+     * Running on http://127.0.0.1:5000/
+ 	 * Restarting with reloader
+
+Now head over to http://127.0.0.1:5000/, and you should see your hello world greeting
+
+If you run the server you will notice that the server is only accessible from your own computer, not from any other in the network. To make app visible from a remote server, example Digital Ocean, change the call of the run() method in main.py to look like this:
+
+    app.run(host='0.0.0.0')
+    
+This tells your operating system to listen on all public IPs. Doing this is useful for developing and testing remotely. 
+
+Once server is running, you can open a new console window/tab and use curl to make API requests:
+
+    curl -i http://127.0.0.1:5000/  
+    
+You should see the following output:
+
+    HTTP/1.0 200 OK
+	Content-Type: text/html; charset=utf-8
+	Content-Length: 15
+	Server: Werkzeug/0.9.6 Python/2.7.3
+	Date: Thu, 23 Oct 2014 21:06:38 GMT
+
+	Hello World!!!
+
 # Tests
 
 To run individual tests, under the pypoker parent folder,
