@@ -5,7 +5,7 @@ in the MongoDB database
 '''
 
 
-from mongoengine import StringField, ListField, EmbeddedDocumentField, EmbeddedDocument
+from mongoengine import StringField, ListField, EmbeddedDocumentField, EmbeddedDocument, Document
 
 
 class Instructor(EmbeddedDocument):
