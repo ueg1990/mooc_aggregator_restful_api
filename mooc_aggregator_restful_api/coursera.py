@@ -35,7 +35,7 @@ class CourseraAPI(object):
 
         '''
         result = []
-        for item in self.response_courses['elements']:
+        for item in self.response_courses.json()['elements']:
             course = {}
             course['mooc'] = 'coursera'
             course['title'] = item['name']            
@@ -51,7 +51,7 @@ class CourseraAPI(object):
             if 'instructors' in links:
                 instructors = []
                 for item_x in links['instructors']:
-                    for item_y in self.response_instructors['elements']:
+                    for item_y in self.response_instructors.json()['elements']:
                         if item_x == item_y['id']:
                             instructors.append(item_y)
                 course['instructors'] = instructors
@@ -61,7 +61,7 @@ class CourseraAPI(object):
             if 'categories' in links:
                 categories = []
                 for item_x in links['categories']:
-                    for item_y in self.response_categories['elements']:
+                    for item_y in self.response_categories.json()['elements']:
                         if item_x == item_y['id']:
                             categories.append(item_y)
                 course['categories'] = categories
@@ -71,7 +71,7 @@ class CourseraAPI(object):
             if 'universities' in links:
                 universities = []
                 for item_x in links['universities']:
-                    for item_y in self.response_universities['elements']:
+                    for item_y in self.response_universities.json()['elements']:
                         if item_x == item_y['id']:
                             universities.append(item_y)
                 course['universities'] = universities
