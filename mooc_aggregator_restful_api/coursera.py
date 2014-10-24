@@ -26,7 +26,6 @@ class CourseraAPI(object):
         self.response_universities = requests.get(CourseraAPI.COURSERA_CATALOG_API_ENDPOINT_UNIVERSITIES)
         self.response_categories = requests.get(CourseraAPI.COURSERA_CATALOG_API_ENDPOINT_CATEGORIES)
         self.response_instructors = requests.get(CourseraAPI.COURSERA_CATALOG_API_ENDPOINT_INSTRUCTORS)
-        self.response_sessions = requests.get(CourseraAPI.COURSERA_CATALOG_API_ENDPOINT_SESSIONS)
 
     def mongofy_courses(self):
         '''

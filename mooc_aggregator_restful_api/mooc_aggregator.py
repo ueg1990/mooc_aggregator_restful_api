@@ -27,7 +27,9 @@ class MOOCAggregator(object):
 
         '''
         udacity_courses = self.udacity.mongofy_courses()
+        coursera_courses = self.coursera.mongofy_courses()
         self._update_udacity_courses(udacity_courses)
+        self._update_coursera_courses(coursera_courses)
 
     def _update_udacity_courses(self, courses):
     	'''
