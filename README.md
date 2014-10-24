@@ -61,25 +61,31 @@ You should see the following output:
     
 GET /moocs/api/v1/courses (without parameters)
 
-GET /moocs/api/v1/courses?fieds=mooc,title,subtitle (with parameters)
+GET /moocs/api/v1/courses?fieds=mooc,title,subtitle (example with parameters)
       
 **Parameters:**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| fields | String | Return only specified fields; if not provided, then return all fields |
+| fields | String | Return only specified fields; if not provided, then return all fields. Available fields can be found in models.py |
 
 #### Get all courses and their information for a given MOOC platfrom (e.g. Udacity or Coursera)
     
 GET /moocs/api/v1/courses/<mooc> (without parameters)
 
-GET /moocs/api/v1/courses/<mooc>?fieds=mooc,title,subtitle (with parameters)
+GET /moocs/api/v1/courses/<mooc>?fieds=mooc,title,subtitle (example with parameters)
       
 **Parameters:**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| fields | String | Return only specified fields; if not provided, then return all fields |    
+| fields | String | Return only specified fields; if not provided, then return all fields. Available fields can be found in models.py |    
+
+#### Get the coursenames of all the MOOCs  
+GET /moocs/api/v1/coursenames 
+
+#### Get the coursenames of a given MOOC platform  
+GET /moocs/api/v1/coursenames/<mooc>
 
 
 # Tests
