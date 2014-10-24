@@ -73,7 +73,7 @@ class CourseraAPI(object):
                 for item_x in links['universities']:
                     for item_y in self.response_universities['elements']:
                         if item_x == item_y['id']:
-                            categories.append(item_y)
+                            universities.append(item_y)
                 course['universities'] = universities
             else:
                 course['universities'] = []

@@ -51,7 +51,18 @@ class MOOCAggregator(object):
         Add Coursera courses to the MongoDB database
 
         '''
-        pass
+        for course in courses:
+            if not Mooc.objects(mooc=course['mooc'], title=course['title']):
+                instructors = [Instructor(name=item['fullName'], bio=item['bio'], image=item['photo150'])
+                               for item in course['instructors']]
+                affiliates  =[item['name'] for item in course['universities']]
+                categories  =[item['name'] for item in course['categories']]
+                mooc = Mooc(course['mooc'], course['title'],
+                            course['photo'], course['trailer'], course['short_summary'],
+                            course['summary'], course['recommended_background'],
+                            course['syllabus'], instructors, course['faq'],
+                            categories, affiliates)
+                mooc.save()
 
 if __name__ == '__main__':
     mooc = MOOCAggregator()
