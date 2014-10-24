@@ -49,7 +49,7 @@ class UdacityAPI(object):
         which will be inserted into the MongoDB database
 
         '''
-        return [{'mooc': 'udacity', 'title': item['title'], 'subtitle': item['subtitle'],
+        return [{'mooc': 'udacity', 'title': item['title'],
                  'photo': item['image'], 'trailer': item['teaser_video']['youtube_url'],
                  'short_summary': item['short_summary'], 'summary': item['summary'],
                  'recommended_background': item['required_knowledge'], 'syllabus': item['syllabus'],
