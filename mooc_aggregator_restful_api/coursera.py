@@ -17,11 +17,10 @@ class CourseraAPI(object):
     '''
 
     COURSERA_CATALOG_API_ENDPOINT_COURSES = 'https://api.coursera.org/api/catalog.v1/courses?fields=name,shortDescription,photo,video,faq,aboutTheCourse,courseSyllabus,recommendedBackground,aboutTheInstructor&includes=instructors,categories,universities'
-    COURSERA_CATALOG_API_ENDPOINT_UNIVERSITIES = 'https://api.coursera.org/api/catalog.v1/universities'
+    COURSERA_CATALOG_API_ENDPOINT_UNIVERSITIES = 'https://api.coursera.org/api/catalog.v1/universities?fields=name'
     COURSERA_CATALOG_API_ENDPOINT_CATEGORIES = 'https://api.coursera.org/api/catalog.v1/categories'
-    COURSERA_CATALOG_API_ENDPOINT_INSTRUCTORS = 'https://api.coursera.org/api/catalog.v1/instructors'
-    COURSERA_CATALOG_API_ENDPOINT_SESSIONS = 'https://api.coursera.org/api/catalog.v1/sessions'
-
+    COURSERA_CATALOG_API_ENDPOINT_INSTRUCTORS = 'https://api.coursera.org/api/catalog.v1/instructors?fields=fullName,bio,photo150'
+    
     def __init__(self):
         self.response_courses = requests.get(CourseraAPI.COURSERA_CATALOG_API_ENDPOINT_COURSES)
         self.response_universities = requests.get(CourseraAPI.COURSERA_CATALOG_API_ENDPOINT_UNIVERSITIES)
@@ -47,24 +46,40 @@ class CourseraAPI(object):
             course['recommended_background'] = item['recommendedBackground']
             course['syllabus'] = item['courseSyllabus']
             course['faq'] = item['faq']
-            # instructors, categories, universities
+            
             links = item['links']
             if 'instructors' in links:
-                pass
+                instructors = []
+                for item_x in links['instructors']:
+                    for item_y in self.response_instructors['elements']:
+                        if item_x == item_y['id']:
+                            instructors.append(item_y)
+                course['instructors'] = instructors
             else:
                 course['instructors'] = []
 
             if 'categories' in links:
-                pass
+                categories = []
+                for item_x in links['categories']:
+                    for item_y in self.response_categories['elements']:
+                        if item_x == item_y['id']:
+                            categories.append(item_y)
+                course['categories'] = categories
             else:
                 course['categories'] = []
 
             if 'universities' in links:
-                pass
+                universities = []
+                for item_x in links['universities']:
+                    for item_y in self.response_universities['elements']:
+                        if item_x == item_y['id']:
+                            categories.append(item_y)
+                course['universities'] = universities
             else:
                 course['universities'] = []
 
             result.append(course)
+        return result
 
 if __name__ == '__main__':
     coursera_object = CourseraAPI()
