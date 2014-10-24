@@ -35,3 +35,4 @@ class Mooc(Document):
     instructors = ListField(EmbeddedDocumentField(Instructor))
     faq = StringField()
     categories = ListField(StringField())
+    affiliates = ListField(StringField())

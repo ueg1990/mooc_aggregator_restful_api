@@ -53,8 +53,8 @@ class UdacityAPI(object):
                  'photo': item['image'], 'trailer': item['teaser_video']['youtube_url'],
                  'short_summary': item['short_summary'], 'summary': item['summary'],
                  'recommended_background': item['required_knowledge'], 'syllabus': item['syllabus'],
-                 'instructors': item['instructors'], 'faq': item['faq'], 'categories': item['tracks']}
-                for item in self.get_courses()]
+                 'instructors': item['instructors'], 'faq': item['faq'], 'categories': item['tracks'],
+                 'affiliates' : item['affiliates']} for item in self.get_courses()]
         # result = []
         # for item in self.get_courses():
         #     course = {}
