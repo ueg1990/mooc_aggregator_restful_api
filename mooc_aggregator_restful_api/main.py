@@ -117,10 +117,10 @@ def get_coursenames_by_mooc(mooc):
 
 
 @app.route('/moocs/api/v1/courses/<mooc>/<key>', methods=['GET'])
-def get_courses_by_mooc(mooc):
+def get_cours_by_mooc_and_key(mooc):
     '''
-    Get all courses that belong to a given MOOC platform e.g. Udacity or Coursera
-    and a key which is unique to a course in the platform. Allow retrieving 
+    Get course info that belong to a given MOOC platform e.g. Udacity or Coursera
+    and a key which is unique to the course in the platform. Allow retrieving 
     only subset of fields by passing subset of fields as GET parameter with key 
     'fields', for example,
 
