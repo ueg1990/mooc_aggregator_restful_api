@@ -40,8 +40,8 @@ class MOOCAggregator(object):
             if not Mooc.objects(mooc=course['mooc'], title=course['title']):
                 instructors = [Instructor(name=item['name'], bio=item['bio'], image=item['image'])
                                for item in course['instructors']]
-                affiliates  =[item['name'] for item in course['affiliates']]
-                mooc = Mooc(course['mooc'], course['title'],
+                affiliates = [item['name'] for item in course['affiliates']]
+                mooc = Mooc(course['mooc'], course['key'],course['title'],
                             course['photo'], course['trailer'], course['short_summary'],
                             course['summary'], course['recommended_background'],
                             course['syllabus'], instructors, course['faq'],
@@ -57,9 +57,9 @@ class MOOCAggregator(object):
             if not Mooc.objects(mooc=course['mooc'], title=course['title']):
                 instructors = [Instructor(name=item['fullName'], bio=item['bio'], image=item['photo150'])
                                for item in course['instructors']]
-                affiliates  =[item['name'] for item in course['universities']]
-                categories  =[item['name'] for item in course['categories']]
-                mooc = Mooc(course['mooc'], course['title'],
+                affiliates  = [item['name'] for item in course['universities']]
+                categories  = [item['name'] for item in course['categories']]
+                mooc = Mooc(course['mooc'], course['key'],course['title'],
                             course['photo'], course['trailer'], course['short_summary'],
                             course['summary'], course['recommended_background'],
                             course['syllabus'], instructors, course['faq'],

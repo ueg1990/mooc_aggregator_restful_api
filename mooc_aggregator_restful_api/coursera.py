@@ -37,6 +37,7 @@ class CourseraAPI(object):
         for item in self.response_courses.json()['elements']:
             course = {}
             course['mooc'] = 'coursera'
+            course['key'] = item['shortName']
             course['title'] = item['name']            
             course['photo'] = item['photo']
             course['trailer'] = item['video']

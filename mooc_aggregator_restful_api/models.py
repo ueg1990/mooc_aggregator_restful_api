@@ -24,8 +24,8 @@ class Mooc(Document):
 
     '''
     mooc = StringField()
+    key = StringField()
     title = StringField()
-    #subtitle = StringField()
     photo = StringField()
     trailer = StringField()
     short_summary = StringField()
