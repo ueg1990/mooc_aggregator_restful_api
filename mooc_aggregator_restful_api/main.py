@@ -116,6 +116,35 @@ def get_coursenames_by_mooc(mooc):
         return not_found()
 
 
+@app.route('/moocs/api/v1/courses/<mooc>/<key>', methods=['GET'])
+def get_courses_by_mooc(mooc):
+    '''
+    Get all courses that belong to a given MOOC platform e.g. Udacity or Coursera
+    and a key which is unique to a course in the platform. Allow retrieving 
+    only subset of fields by passing subset of fields as GET parameter with key 
+    'fields', for example,
+
+    curl http://127.0.0.1:5000/moocs/api/v1/courses/udacity?fields=title,subtitle
+
+    If provided key is other than 'fields' or any value of subset of fields
+    does not match that in database, return result of default API call:
+
+    curl http://127.0.0.1:5000/moocs/api/v1/courses/udacity/cs101
+
+    '''
+    if mooc in MOOC_PLATFORMS:
+        fields = request.args.get('fields')
+        if fields:
+            try:
+                parameters = fields.split(',')
+                return jsonify({'moocs': Mooc.objects(mooc=mooc, key=key).only(*parameters).to_json()})
+            except:
+                return jsonify({'moocs': Mooc.objects(mooc=mooc, key=key).to_json()})
+        return jsonify({'moocs': Mooc.objects(mooc=mooc, key=key).to_json()})
+    else:
+        return not_found()
+
+
 if __name__ == '__main__':
 
     connect('moocs')
