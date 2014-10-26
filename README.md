@@ -12,6 +12,15 @@ To install, run:
    
      $ pip install -r requirements.txt
 
+# Features
+* Developed on Python 2.7
+* Flask 0.10.1
+* MongoDB 2.6.5
+* Flask-mongoengine 0.7.1 
+* Mongoengine 0.8.7
+* Nose 1.3.4
+* Pymongo 2.7.2
+
 # Usage
 ## Server Setup
 
